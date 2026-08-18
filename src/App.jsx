@@ -11,13 +11,33 @@ const App = () => {
 
     const [limitCharacter, setLimitCharacter] = useState (false)
 
-const character = excludeSpaces? text.replace(/\s/g,"").lenght : text.lenght
+    const [limitCharacterValue, setLimitCharacterValue] = useState(300)
+
+const character = excludeSpaces? text.replace(/\s/g,"").lenght : text.lenght8
+
+const handleChangeTextarea = (e) => {
+    const value = e.target.value
+
+
+    if(limitCharacter){
+        if (value.lenght<=limitCharacterValue){setText (value)}
+    }
+
+    else{    
+    setText (value)}
+    
+}
+
+const handleLimitCharacterInput = () => {
+    setLimitCharacter (!limitCharacter)
+    const newText = text.slice(0, limitCharacterValue)
+    setText(newText)}
 return <main>
     <Header/>
     <h2>Analize your text<br />in real-time </h2>
     <textarea 
     placeholder= "Ingrese su texto"
-    onChange= {(e) => setText (e.target.value)}
+    onChange= {handleChangeTextarea }
     value={text}
      ></textarea>
      <div>
@@ -32,8 +52,12 @@ return <main>
         <input 
         type="checkbox"
         checked= {limitCharacter}
-        onChange={()=> setLimitCharacter (!limitCharacter)}></input>
+        onChange={handleLimitCharacterInput}></input>
         Set Character Limit</label>
+        {limitCharacter && <input 
+        type="number"
+        value={limitCharacterValue}
+        onChange={(e)=> setLimitCharacterValue (e.target.value)}></input>}
         </div>
       
 
