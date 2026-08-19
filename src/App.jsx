@@ -9,6 +9,7 @@ const App = () => {
     const [excludeSpaces, setExcludeSpaces] = useState(false)
     const [limitCharacter, setLimitCharacter] = useState (false)
     const [limitCharacterValue, setLimitCharacterValue] = useState(300)
+    const [showAll, setShowAll]= useState (false)
 
 const characters = excludeSpaces? text.replace(/\s/g,"").length : text.length
 
@@ -34,6 +35,26 @@ const sentences = text.trim ()=== ""? 0 : text.split(/[.!?]+/).filter(sentence =
 
 const readingTime = Math.ceil(words / 200)
 
+const cleanText = text.toLowerCase().replace(/[^a-záéíóú]/g, "")
+const totalLetters = cleanText.length
+const dictionaryLetters = {}
+
+cleanText.split("").forEach(letter=>{ dictionaryLetters [letter] = (dictionaryLetters [letter]  || 0) + 1  })
+
+const letters = Object.entries(dictionaryLetters).map(dataLetter =>{
+    const letter = dataLetter[0]
+    const amountLetter = dataLetter [1]
+
+    const renderLetters = {
+    letterName: letter,
+    amount: amountLetter,
+    porcentage: amountLetter/totalLetters *100
+}
+return renderLetters
+})
+ const sortLetters = letters.sort((a,b) => b.amount - a.amount)
+
+const visibleLetters = showAll ? sortLetters : sortLetters.slice(0,5)
 
 return (
 <main>
@@ -69,9 +90,25 @@ return (
     <p>Total Characters {characters}</p>
     <p>Word Count {words}</p>
     <p>Sentence Count {sentences}</p>
-      
+ {totalLetters > 0 && (
+    <article>
+         <h3>Letter Density</h3>
+         {visibleLetters.map(letter => (
+        <div key={letter.letterName}>
+        <span>{letter.letterName.toUpperCase()}</span>
+        <meter min="0" max="100" value={letter.porcentage}></meter>
+        <span>{letter.amount} {letter.porcentage.toFixed(0)}%</span>
+        </div>
+        ))}
+    </article>
+)}
 
+{sortLetters.length > 5 && (
+    <button onClick={() => setShowAll(!showAll)}>
+        {showAll ? "See less ↑" : "See more ↓"}
+    </button>
+)}
 </main>
-)} 
+)}  
 
 export { App }
