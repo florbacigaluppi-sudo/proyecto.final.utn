@@ -13,26 +13,31 @@ const App = () => {
 
     const [limitCharacterValue, setLimitCharacterValue] = useState(300)
 
-const character = excludeSpaces? text.replace(/\s/g,"").lenght : text.lenght8
+const characters = excludeSpaces? text.replace(/\s/g,"").length : text.length
 
 const handleChangeTextarea = (e) => {
     const value = e.target.value
 
 
     if(limitCharacter){
-        if (value.lenght<=limitCharacterValue){setText (value)}
+        if (value.length<=limitCharacterValue){setText (value)}
     }
-
     else{    
-    setText (value)}
-    
+    setText (value)}   
 }
 
 const handleLimitCharacterInput = () => {
     setLimitCharacter (!limitCharacter)
     const newText = text.slice(0, limitCharacterValue)
     setText(newText)}
-return <main>
+
+const words = text.trim ()=== ""? 0 : text.trim().split(/\s+/).length
+const sentences = text.trim ()=== ""? 0 : text.split(/[.!?]+/).filter(sentence => sentence.trim() !== "").length
+
+
+
+return (
+<main>
     <Header/>
     <h2>Analize your text<br />in real-time </h2>
     <textarea 
@@ -59,9 +64,12 @@ return <main>
         value={limitCharacterValue}
         onChange={(e)=> setLimitCharacterValue (e.target.value)}></input>}
         </div>
+        <p>Total Characters {characters}</p>
+        <p>Word Count {words}</p>
+        <p>Sentence Count {sentences}</p>
       
 
 </main>
-}
+)} 
 
 export { App }
