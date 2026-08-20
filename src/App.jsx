@@ -11,11 +11,15 @@ import "./index.css"
 
 
 const App = () => {
-    const [dark, setDark] = useState(false)
+   const [dark, setDark] = useState(() => {
+    return localStorage.getItem("darkMode") === "true"
+    })
 
     useEffect(() => {
-    document.body.className = dark ? "dark-theme" : ""
-}, [dark])
+    document.body.className = dark ? "dark-theme" : "" }, [dark])
+    
+    useEffect(() => {
+    localStorage.setItem("darkMode", dark)}, [dark])
 
 
     const  [text, setText]= useState ("Design is the silent ambassador of your brand. Simplicity is key to effective communication, creating clarity in every interaction. A great design transforms complex ideas into elegant solutions, making them easy to understand. It blends aesthetics and functionality seamlessly.")
