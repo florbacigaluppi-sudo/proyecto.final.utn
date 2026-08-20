@@ -1,4 +1,8 @@
 import { Header } from "./components/Header"
+import { WriteArea } from "./components/WriteArea"
+import { Controls } from "./components/Controls"
+import { Stats } from "./components/Stats"
+import { LetterDensity } from "./components/LetterDensity"
 import { useState } from "react"
 
 
@@ -60,54 +64,33 @@ return (
 <main>
     <Header/>
     <h2>Analize your text<br />in real-time </h2>
-    <textarea 
-    placeholder= "Ingrese su texto"
-    onChange= {handleChangeTextarea }
-    value={text}
-     ></textarea>
-     <div>
-        <label>
-        <input 
-        type="checkbox"
-        checked= {excludeSpaces}
-        onChange={()=>setExcludeSpaces(!excludeSpaces)}></input>
-        Exclude Spaces</label>
-
-         <label>
-        <input 
-        type="checkbox"
-        checked= {limitCharacter}
-        onChange={handleLimitCharacterInput}></input>
-        Set Character Limit</label>
-        {limitCharacter && <input 
-        type="number"
-        value={limitCharacterValue}
-        onChange={(e)=> setLimitCharacterValue (e.target.value)}></input>}
-        <div>
-            <p>Aprox. reading time: &lt; {readingTime} min</p>
-        </div>
-    </div>
-    <p>Total Characters {characters}</p>
-    <p>Word Count {words}</p>
-    <p>Sentence Count {sentences}</p>
- {totalLetters > 0 && (
-    <article>
-         <h3>Letter Density</h3>
-         {visibleLetters.map(letter => (
-        <div key={letter.letterName}>
-        <span>{letter.letterName.toUpperCase()}</span>
-        <meter min="0" max="100" value={letter.porcentage}></meter>
-        <span>{letter.amount} {letter.porcentage.toFixed(0)}%</span>
-        </div>
-        ))}
-    </article>
-)}
-
-{sortLetters.length > 5 && (
-    <button onClick={() => setShowAll(!showAll)}>
-        {showAll ? "See less ↑" : "See more ↓"}
-    </button>
-)}
+    <WriteArea
+    handleChangeTextarea= {handleChangeTextarea}
+    text= {text}>
+    </WriteArea>
+     <Controls
+     excludeSpaces = {excludeSpaces}
+     setExcludeSpaces= {setExcludeSpaces}
+     limitCharacter = {limitCharacter}
+     handleLimitCharacterInput = {handleLimitCharacterInput}
+     limitCharacterValue = {limitCharacterValue} 
+     readingTime={readingTime}
+     setLimitCharacterValue={setLimitCharacterValue}
+     ></Controls>
+     <Stats
+    characters= {characters}
+    words={words}
+    sentences={sentences}>
+     </Stats>
+    
+    
+     {text && <LetterDensity
+       sortLetters = {sortLetters}
+       visibleLetters= {visibleLetters}
+       showAll= {showAll}
+       setShowAll= {setShowAll}>
+    </LetterDensity>
+}
 </main>
 )}  
 
