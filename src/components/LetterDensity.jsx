@@ -13,12 +13,6 @@ const LetterDensity = ({visibleLetters, sortLetters, showAll, setShowAll}) => {
         
     </article>
 
-
-{sortLetters.length > 5 && (
-    <button onClick={() => setShowAll(!showAll)}>
-        {showAll ? "See less ↑" : "See more ↓"}
-    </button>
-)}
     </>
      ) 
 }

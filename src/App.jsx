@@ -4,6 +4,7 @@ import { Controls } from "./components/Controls"
 import { Stats } from "./components/Stats"
 import { LetterDensity } from "./components/LetterDensity"
 import { useState } from "react"
+import { Button } from "./components/Button"
 
 
 
@@ -90,7 +91,13 @@ return (
        showAll= {showAll}
        setShowAll= {setShowAll}>
     </LetterDensity>
-}
+    }
+    {sortLetters.length > 5 && (
+    <Button
+    setShowAll={setShowAll}
+    showAll= {showAll}>
+    </Button>
+)}
 </main>
 )}  
 
