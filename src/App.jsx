@@ -5,6 +5,7 @@ import { Stats } from "./components/Stats"
 import { LetterDensity } from "./components/LetterDensity"
 import { useState } from "react"
 import { Button } from "./components/Button"
+import "./index.css"
 
 
 
@@ -62,8 +63,8 @@ return renderLetters
 const visibleLetters = showAll ? sortLetters : sortLetters.slice(0,5)
 
 return (
-<main>
-    <Header/>
+<main className="main">
+    <Header className= "header"/>
     <h2>Analize your text<br />in real-time </h2>
     <WriteArea
     handleChangeTextarea= {handleChangeTextarea}

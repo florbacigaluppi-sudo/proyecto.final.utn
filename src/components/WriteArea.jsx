@@ -1,5 +1,5 @@
 const WriteArea =({handleChangeTextarea, text}) => {
-    return <textarea 
+    return <textarea className="writearea"
     placeholder= "Ingrese su texto"
     onChange= {handleChangeTextarea }
     value={text}
