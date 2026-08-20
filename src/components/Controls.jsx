@@ -1,6 +1,6 @@
 const Controls = ({excludeSpaces, setExcludeSpaces, limitCharacter, handleLimitCharacterInput, limitCharacterValue, readingTime, setLimitCharacterValue})=>{
     return (
-        <div>
+        <div className="options">
         <label>
         <input 
         type="checkbox"
@@ -14,11 +14,11 @@ const Controls = ({excludeSpaces, setExcludeSpaces, limitCharacter, handleLimitC
         checked= {limitCharacter}
         onChange={handleLimitCharacterInput}></input>
         Set Character Limit</label>
-        {limitCharacter && <input 
+        {limitCharacter && <input className="input-limit-character"
         type="number"
         value={limitCharacterValue}
         onChange={(e)=> setLimitCharacterValue(e.target.value)}></input>}
-        <div>
+        <div className="reading-time">
             <p>Aprox. reading time: &lt; {readingTime} min</p>
         </div>
     </div>

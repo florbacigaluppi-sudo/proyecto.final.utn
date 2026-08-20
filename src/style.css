@@ -1,13 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
-
-
-*{ margin: 0;
-padding: 0;
-box-sizing: border-box;
-font-family: var(--primary-font);
-color: var(--text2-color);
+*{
+    margin: 0;
+    padding: 0;
+    font-family: var(--primary-font);
+    color: var(--text2-color);
+    box-sizing: border-box;
+   
 }
-
 
 :root{
     --background-color1: #12131A;
@@ -25,65 +23,64 @@ color: var(--text2-color);
     --primary-font: "Space Grotesk", "Inter";
 }
 body{
-    background-color: var(--background-color1);
+    background-color: #f3f3f2;
     display: flex;
     justify-content: center;
-    height: fit-content; 
-    margin-top: 30px;
-    margin-bottom: 30px;
-   
+    height: fit-content;
+    
     
 }
 
-.main{
-    width: 800px;
+
+.card{
+    background-color: var(--background-color1);
+    width: 600px;
+    padding: 20px 30px;
+    box-shadow: 4px 5px 5px 0px var(--background-color2);
+    margin-top: 30px;
+    margin-bottom: 30px;
+    
 }
 
-
-
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.header-logo{
+.header{
     display: flex;
     align-items: center;
     gap: 10px;
+    font-size: 13px;
+    
+   
+
 }
 
-.header-logo p {
-    margin: 0;
-    font-size: 30px;
-    font-weight: bold;
-    color: var(--text2-color);
+
+.logo{
+
+width:35px;
+
 }
 
-.header-logo h1 {
-    margin: 0;
-    font-size: 18px;
-    color: var(--text2-color);
-}
 
-.header-switch{
-
-    color: white;
+.modeswitch{
+    margin-left: auto;
     background-color: var(--background-color2);
+    border-radius: 10px;
     border: none;
     width: 40px;
     height: 40px;
-    border-radius: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    transition: .3s;
+    }
+
+.modeswitch img{
+ 
+    width: 25px  
 }
 
 
-
-
-h2{
+.text h1{
     color: var(--text1-color);
     text-align: center;
     font-size: 40px;
@@ -91,65 +88,45 @@ h2{
     line-height: 1;
 }
 
-.writearea {
-    width: 90%;
-   
-    min-height: 140px;
+.text textarea{
+    width: 100%;
+    height: 140px;
     border-radius: 10px;
     padding: 15px;
     background-color: var(--background-color2);
     border-color: var(--border-color);
     font-size: 14px;
      resize: none;
-     margin: 15px 30px;
-
+     margin: 15px 0;
      box-shadow: 4px 4px 5px 0px  var(--border-color)
 
 }
+
 .options{
     display: flex;
     gap: 15px;
     font-size: 11px;
     margin-bottom: 30px;
 }
+    
+.options p {
+    margin-left: auto;
+}
 
 .options label {
     display: flex;
-    gap: 10px;
+    gap: 8px;
     cursor: pointer;
     align-items: center;
-    justify-content: space-between;
     
 }
-.options input [type="checkbox"]{
+.options input {
      appearance: none;
      border: solid 1px var(--text2-color);
      width: 15px;
      height: 15px;
      border-radius: 5px; 
      cursor: pointer;
-}
-.input-limit-character {
-    width: 60px;
-    height: 20px;
-    padding: 5px;
-    background-color: var(--background-color2);
-    border: 1px solid var(--border-color);
-    border-radius: 6px;
-    color: var(--text1-color);
-    font-size: 13px;
-    text-align: center;
-    outline: none;
-}
-
-.input-limit-character::-webkit-inner-spin-button,
-.input-limit-character::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-.reading-time { 
-    margin-left: auto;
 }
 
 .results{
@@ -159,10 +136,10 @@ h2{
 }
 
 
-.results p, .results h3{
+.results p, .results h2{
     color: var(--background-color1);
 }
-.results h3{
+.results h2{
     font-size: 40px;
 }
 
@@ -183,6 +160,7 @@ h2{
     background-image: url("./assets/images/bg3.png");
 }
 
+
 .results article{
     width: 30%;
     height: 110px;
@@ -198,56 +176,75 @@ h2{
     transition: .3s;
 }
 
-.results article:hover{
-    transform: scale(1.1);
-}
-
-.letter-density h3{
+.LetterDensity h4{
     font-size: 20px;
     font-weight: 700;
     
 }
-.letter-density ul {
+ul{
     list-style: none;
     text-transform: uppercase;
     font-size: 12px;
 }
-
-li {
+li{
+    
     display: flex;
+    
     align-items: center;
     margin: 10px 0;
 }
 
-.letter {
-    width: 20px;
-}
-
-.bar {
-    width: 90%;
+.bar{
+    background-color: var(--background-color2);
+    width: 80%;
     height: 10px;
+    align-items: center;
     border-radius: 15px;
     overflow: hidden;
-    background: var(--background-color2);
-    margin-right: 15px;
-}
-.bar::-webkit-meter-bar {
-    background: var(--background-color2);
-    border: none;
-    border-radius: 15px;
+
 }
 
-.bar::-webkit-meter-optimum-value {
-    background: var(--progressbar-color);
-    border-radius: 15px;
+.porcent{
+    margin-left: auto;
 }
 
-.list-button{
+.Letter{
+    width: 20px;  
+}
+
+.fill{
+    background-color: var(--progressbar-color);
+    border-radius: 15px;
+
+}
+li:nth-child(1) .fill{
+    width:16% ;
+    height: 100%;
+}
+
+li:nth-child(2) .fill{
+    width:11.6% ;
+    height: 100%;
+}
+li:nth-child(3) .fill{
+    width:11.2% ;
+    height: 100%;
+}
+li:nth-child(4) .fill{
+    width:8.8% ;
+    height: 100%;
+}
+li:nth-child(5) .fill{
+    width:8.4% ;
+    height: 100%;
+}
+
+.LetterDensity button{
     
     display: flex;
     margin-top: 30px;
     padding: 10px;
-    width: 100px;
+    width: 110px;
     height: 30px;
     background-color: var(--background-color2);
     border: none;
@@ -257,5 +254,71 @@ li {
     margin-bottom: 40px;
     font-weight: 600;
     transition: .3s;
-   
+    
 }
+
+.LetterDensity button img{
+    width: 15px;
+    margin-left: auto;
+}
+
+
+button:hover  {
+    background-color: var(--border-color);
+    transform: scale(1.1);
+
+}
+
+.results article:hover{
+    transform: scale(1.1);
+}
+
+@media (max-width: 435px){
+    .card{
+        width: 100%;
+        min-height: fit-content;
+        margin-top: 0;
+        margin-bottom: 0;
+       
+    }
+
+    .text h1{
+        font-size: 30px;
+        margin: 20px 60px;
+    }
+    .text textarea{
+        font-size: 12px;
+    }
+
+    .options{
+    
+    font-size: 10px;
+   
+    
+}
+    .results{
+        flex-direction: column;
+        align-items: center;
+        
+    }
+    .results article {
+        width: 50%;
+           }
+
+.results p{
+    font-size: 12px;
+}
+
+
+.LetterDensity h4{
+    font-size: 15px;
+
+}
+
+ul{
+    font-size: 10px;
+}
+.bar{
+    width: 75%;
+}
+    }
