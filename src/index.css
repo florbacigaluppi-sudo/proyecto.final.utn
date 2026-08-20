@@ -23,7 +23,19 @@ color: var(--text2-color);
     --border-color: #2A2D3A;
     /* fuente */
     --primary-font: "Space Grotesk", "Inter";
+
 }
+
+main.dark-theme {
+    --background-color1: #F5F5F5;
+    --background-color2: #FFFFFF;
+    --text1-color: #12131A;
+    --text2-color: #4A4A55;
+    --progressbar-color: #8B3DFF;
+    --border-color: #DADAE0;
+}
+
+
 body{
     background-color: var(--background-color1);
     display: flex;
@@ -35,7 +47,16 @@ body{
     
 }
 
-.main{
+body.dark-theme {
+    --background-color1: #F5F5F5;
+    --background-color2: #FFFFFF;
+    --text1-color: #12131A;
+    --text2-color: #4A4A55;
+    --progressbar-color: #8B3DFF;
+    --border-color: #DADAE0;
+}
+
+main{
     width: 800px;
 }
 
@@ -80,7 +101,16 @@ body{
     cursor: pointer;
 }
 
+.header-switch.light {
+    
+      background-color: #1C1F2A;
+    color: #F2F2F7;
+}
 
+.header-switch.dark {
+  background-color: #E5E5EA;
+    color: #12131A;
+}
 
 
 h2{

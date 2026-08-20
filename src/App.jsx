@@ -3,7 +3,7 @@ import { WriteArea } from "./components/WriteArea"
 import { Controls } from "./components/Controls"
 import { Stats } from "./components/Stats"
 import { LetterDensity } from "./components/LetterDensity"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Button } from "./components/Button"
 import "./index.css"
 
@@ -11,11 +11,19 @@ import "./index.css"
 
 
 const App = () => {
+    const [dark, setDark] = useState(false)
+
+    useEffect(() => {
+    document.body.className = dark ? "dark-theme" : ""
+}, [dark])
+
+
     const  [text, setText]= useState ("Design is the silent ambassador of your brand. Simplicity is key to effective communication, creating clarity in every interaction. A great design transforms complex ideas into elegant solutions, making them easy to understand. It blends aesthetics and functionality seamlessly.")
     const [excludeSpaces, setExcludeSpaces] = useState(false)
     const [limitCharacter, setLimitCharacter] = useState (false)
     const [limitCharacterValue, setLimitCharacterValue] = useState(300)
     const [showAll, setShowAll]= useState (false)
+
 
 const characters = excludeSpaces? text.replace(/\s/g,"").length : text.length
 
@@ -62,9 +70,11 @@ return renderLetters
 
 const visibleLetters = showAll ? sortLetters : sortLetters.slice(0,5)
 
+const handleDarkTheme = () => setDark(!dark)
+
 return (
-<main className="main">
-    <Header className= "header"/>
+<main className={`${ dark ? "dark-theme" : ""}`}>
+    <Header className= "header" dark= {dark} handleDarkTheme={handleDarkTheme}/>
     <h2>Analize your text<br />in real-time </h2>
     <WriteArea
     handleChangeTextarea= {handleChangeTextarea}
@@ -87,10 +97,9 @@ return (
     
     
      {text && <LetterDensity
-       sortLetters = {sortLetters}
+    
        visibleLetters= {visibleLetters}
-       showAll= {showAll}
-       setShowAll= {setShowAll}>
+      >
     </LetterDensity>
     }
     {sortLetters.length > 5 && (

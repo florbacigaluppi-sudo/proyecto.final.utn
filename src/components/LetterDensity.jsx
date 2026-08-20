@@ -1,7 +1,7 @@
 import { ProgressBar } from "./ProgressBar"
 
 
-const LetterDensity = ({visibleLetters, sortLetters, showAll, setShowAll}) => {
+const LetterDensity = ({visibleLetters}) => {
     return( 
     <>
    
